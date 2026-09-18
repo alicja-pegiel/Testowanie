@@ -39,3 +39,7 @@ public double obliczSrednia(List<Integer> liczby) {
     }
     return suma / liczby.size();
 }
+
+Scanner sc = new Scanner(System.in);
+System.out.print("Podaj swoje imię: ");
+String = sc.nextString();
