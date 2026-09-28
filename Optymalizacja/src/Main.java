@@ -1,13 +1,29 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+    long startTime = System.nanoTime();
+    funkcjaPrzyklad();
+    long stopTime = System.nanoTime();
+    long czas = stopTime - startTime;
+    System.out.println("Funkcja przykładowa przed optymalizacją: ");
+    System.out.println("Czas wykonania w nanosekundach: " + czas);
+    System.out.println("Czas wykonania w sekundach: " + (double) czas/1_000_000_000);
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+    startTime = System.nanoTime();
+    funkcjaPrzykladZoptymalizowana();
+    stopTime = System.nanoTime();
+    czas = stopTime - startTime;
+    System.out.println("\nFunkcja przykładowa po optymalizacji: ");
+    System.out.println("Czas wykonania w nanosekundach: " + czas);
+    System.out.println("Czas wykonania w sekundach: " + (double) czas/1_000_000_000);
+}
+
+public static void funkcjaPrzyklad() {
+    String slowo = "";
+    for (int i = 0; i < 100000; i++) {
+        slowo = slowo + "a";
     }
+}
+
+public static void funkcjaPrzykladZoptymalizowana() {
+    StringBuilder slowo = new StringBuilder();
+    slowo.repeat("a", 100000);
 }
